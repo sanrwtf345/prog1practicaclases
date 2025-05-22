@@ -2,8 +2,10 @@ package proyectopeluqueria;
 
 import proyectopeluqueria.model.*;
 
-public class PeluqueriaCaninaApp {
+import java.util.logging.Logger;
 
+public class PeluqueriaCaninaApp {
+  public static final Logger log = Logger.getLogger(PeluqueriaCaninaApp.class.getName());
   public static void main(String[] args) {
     //crear mascotas
     Mascota mascota1 = new Mascota("Tom", "Dalmata", Especie.PERRO, 18, "Santiago Romero");
@@ -21,10 +23,9 @@ public class PeluqueriaCaninaApp {
     Turno turno3 = new Turno("23/05/25", "16:45", Estado.PROGRAMADO, mascota3, servicio3);
 
     //mostrar datos
-    System.out.println(turno1.mostrarDatos());
-    System.out.println(turno2.mostrarDatos());
-    System.out.println(turno3.mostrarDatos());
-
+    log.info(turno1.mostrarDatos());
+    log.info(turno2.mostrarDatos());
+    log.info(turno3.mostrarDatos());
 
   }
 }
