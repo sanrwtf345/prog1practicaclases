@@ -2,22 +2,28 @@ package proyectopeluqueria.model;
 
 public class Servicio {
   private int id;
-  private String tipoServicio;
+  private TipoServicio tipoServicio;
   private String descripcion;
   private int duracion;
   private double precio;
   private static int idServicioIncremento;
 
-  Servicio() {
+  public Servicio(TipoServicio tipoServicio, String descripcion, int duracion, double precio) {
+    this.tipoServicio = TipoServicio.BANIO;
+    this.descripcion = descripcion;
+    this.duracion = duracion;
+    this.precio = precio;
     idServicioIncremento++;
     this.id = idServicioIncremento;
+
   }
 
+  //seters
   public void setId(int id) {
     this.id = id;
   }
 
-  public void setTipoServicio(String tipoServicio) {
+  public void setTipoServicio(TipoServicio tipoServicio) {
     this.tipoServicio = tipoServicio;
   }
 
@@ -33,11 +39,12 @@ public class Servicio {
     this.precio = precio;
   }
 
+  //getters
   public int getId() {
     return this.id;
   }
 
-  public String getTipoServicio() {
+  public TipoServicio getTipoServicio() {
     return this.tipoServicio;
   }
 
@@ -52,4 +59,23 @@ public class Servicio {
   public double getPrecio() {
     return this.precio;
   }
+
+  //metodos
+  public String setToStringServicio() {
+    return
+        "\n id: " + this.id +
+            "\n Tipo de servicio: " + this.tipoServicio +
+            "\n Descripcion: " + this.descripcion +
+            "\n Duracion: " + this.duracion +
+            "\n Precio: " + this.precio;
+  }
+
+  public String mostrarDatos() {
+    return "ID: " + id + "\n"
+        + "Tipo de servicio: " + tipoServicio + "\n"
+        + "Descripcion: " + descripcion + "\n"
+        + "Duracion: " + duracion + "\n"
+        + "Precio: " + precio;
+  }
+
 }

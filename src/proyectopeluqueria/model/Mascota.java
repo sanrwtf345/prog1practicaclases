@@ -3,17 +3,24 @@ package proyectopeluqueria.model;
 public class Mascota {
   private int id;
   private String nombre;
-  private String especie;
+  private Especie especie;
   private String raza;
   private int edad;
-  private String nombDueño;
+  private String nombDuenio;
   private static int idMascotasIncremento;
 
-  Mascota() {
+  public Mascota(String nombre, String raza, Especie especie, int edad, String nombDuenio) {
     idMascotasIncremento++;
     this.id = idMascotasIncremento;
+    this.nombre = nombre;
+    this.raza = raza;
+    this.especie = Especie.PERRO;
+    this.edad = edad;
+    this.nombDuenio = nombDuenio;
+
   }
 
+  //seters
   public void setId(int id) {
     this.id = id;
   }
@@ -22,8 +29,7 @@ public class Mascota {
     this.nombre = nombre;
   }
 
-  //cambiar por enum
-  public void setEspecie(String especie) {
+  public void setEspecie(Especie especie) {
     this.especie = especie;
   }
 
@@ -35,10 +41,11 @@ public class Mascota {
     this.edad = edad;
   }
 
-  public void setNombDueño(String nombDueño) {
-    this.nombDueño = nombDueño;
+  public void setNombDuenio(String nombDuenio) {
+    this.nombDuenio = nombDuenio;
   }
 
+  //getters
   public int getId() {
     return this.id;
   }
@@ -47,7 +54,7 @@ public class Mascota {
     return this.nombre;
   }
 
-  public String getEspecie() {
+  public Especie getEspecie() {
     return this.especie;
   }
 
@@ -59,9 +66,28 @@ public class Mascota {
     return this.edad;
   }
 
-  public String getNombDueño() {
-    return this.nombDueño;
+  public String getNombDuenio() {
+    return this.nombDuenio;
   }
 
+  //metodos
+  public String setToStringMascota() {
+    return "\n id: " + this.id +
+        "\n Nombre: " + this.nombre +
+        "\n Especie: " + this.especie +
+        "\n Raza: " + this.raza +
+        "\n Edad: " + this.edad +
+        "\n Nombre del dueño/a: " + this.nombDuenio;
+
+  }
+
+  public String mostrarMascota() {
+    return "ID: " + id + "\n"
+        + "Nombre: " + nombre + "\n"
+        + "Especie: " + especie + "\n"
+        + "Edad: " + edad + "\n"
+        + "Raza: " + raza + "\n"
+        + "Nombre del dueño: " + nombDuenio;
+  }
 
 }
