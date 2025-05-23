@@ -70,7 +70,7 @@ public class Servicio {
             "\n Precio: " + this.precio;
   }
 
-  public String mostrarDatos() {
+  public String mostrarServicio() {
     return "ID: " + id + "\n"
         + "Tipo de servicio: " + tipoServicio + "\n"
         + "Descripcion: " + descripcion + "\n"
