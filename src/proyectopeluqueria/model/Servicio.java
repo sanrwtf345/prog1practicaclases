@@ -1,6 +1,9 @@
 package proyectopeluqueria.model;
 
+import java.util.logging.Logger;
+
 public class Servicio {
+  public static final Logger log = Logger.getLogger(Servicio.class.getName());
   private int id;
   private TipoServicio tipoServicio;
   private String descripcion;
@@ -76,6 +79,14 @@ public class Servicio {
         + "Descripcion: " + descripcion + "\n"
         + "Duracion: " + duracion + "\n"
         + "Precio: " + precio;
+  }
+
+  public static void calcularIVA(Servicio[] arrayServicios) {
+    for (Servicio arrayServicio : arrayServicios) {
+      double totalFinalConIva = arrayServicio.getPrecio() * 1.21;
+      log.info(arrayServicio.mostrarServicio() + "\nEl precio final con IVA es de: " + totalFinalConIva + "\n");
+
+    }
   }
 
 }

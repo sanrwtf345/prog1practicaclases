@@ -90,4 +90,8 @@ public class Mascota {
         + "Nombre del dueño: " + nombDuenio;
   }
 
+  public static void contarMascotaPorEspecie(Mascota[] arrayMascota){
+
+  }
+
 }

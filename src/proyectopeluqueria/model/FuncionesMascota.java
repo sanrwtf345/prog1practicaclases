@@ -43,7 +43,7 @@ public class FuncionesMascota {
       log.info("Ingrese el nombre del dueño:");
       String guardarNomDuenio = sc.nextLine();
       Mascota mascota = new Mascota(guardarNombreMasc, guardarRaza, especie, guardarEdad, guardarNomDuenio);
-      mascotaArray[i]= mascota;
+      mascotaArray[i] = mascota;
     }
   }
 
@@ -104,36 +104,61 @@ public class FuncionesMascota {
 
 
   //funcion agregar servicio
-  public static void agregarServicios(Servicio[] arrayServicios){
+  public static void agregarServicios(Servicio[] arrayServicios) {
     Scanner sc = new Scanner(System.in);
 
-    for (int i=0;i< arrayServicios.length;i++){
-      log.info("Porfavor ingrese el tipo de servicio (banio, cortepelo o limpiezaoidos)");
-      String guardarTServicio = sc.nextLine();
-      //validar tipo de servicio
+    for (int i = 0; i < arrayServicios.length; i++) {
       TipoServicio tipoServicio = null;
-      while (tipoServicio == null){
-        for(TipoServicio t : TipoServicio.values()){
-          if (t.name().equalsIgnoreCase(guardarTServicio)){
+
+      while (tipoServicio == null) {
+        log.info("Por favor, ingrese el tipo de servicio (BANIO, CORTEPELO o LIMPIEZAOIDOS):");
+        String guardarTServicio = sc.nextLine();
+
+        for (TipoServicio t : TipoServicio.values()) {
+          if (t.name().equalsIgnoreCase(guardarTServicio)) {
             tipoServicio = t;
-          }
-          if (tipoServicio == null){
-            log.info("Tipo de servicio invalido. Solo se permite BANIO, CORTEPELO O LIMPIEZA OIDO");
+            break;
           }
         }
+
+        if (tipoServicio == null) {
+          log.info("Tipo de servicio inválido. Solo se permite BANIO, CORTEPELO o LIMPIEZAOIDOS.");
+        }
       }
-      log.info("Ingrese una descripcion del servicio");
+
+      log.info("Ingrese una descripción del servicio:");
       String guardarDescripcion = sc.nextLine();
 
-      log.info("Ingrese la duracion del servicio");
+      log.info("Ingrese la duración del servicio:");
       int guardarDuracion = sc.nextInt();
-      sc.nextLine();
+      sc.nextLine(); // limpiar salto de línea
 
-      log.info("Ingrese el precio del servicio");
+      log.info("Ingrese el precio del servicio:");
       double guardarPrecio = sc.nextDouble();
+      sc.nextLine(); // limpiar salto de línea
 
       Servicio servicio = new Servicio(tipoServicio, guardarDescripcion, guardarDuracion, guardarPrecio);
       arrayServicios[i] = servicio;
+    }
+  }
+
+  //buscar mascota por nombre
+  public static void buscarMascotaPorNombre(Mascota[] arrayMascota) {
+    log.info("Por favor ingrese el nombre de la mascota que quiere buscar:");
+    Scanner sc = new Scanner(System.in);
+    String buscarMascota = sc.nextLine();
+
+    boolean encontrada = false;
+
+    for (int i = 0; i < arrayMascota.length; i++) {
+      if (arrayMascota[i] != null && arrayMascota[i].getNombre().equalsIgnoreCase(buscarMascota)) {
+        log.info("Mascota encontrada en la posición " + (i + 1) + ":\n" + arrayMascota[i].mostrarMascota());
+        encontrada = true;
+      }
+    }
+
+    if (!encontrada) {
+      log.info("No se encontró ninguna mascota con ese nombre.");
     }
   }
 }
