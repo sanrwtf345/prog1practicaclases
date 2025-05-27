@@ -18,7 +18,6 @@ public class FuncionesMascota {
       log.info("Ingrese la raza:");
       String guardarRaza = sc.nextLine();
 
-      // Validar especie
       Especie especie = null;
       while (especie == null) {
         log.info("Ingrese la especie (perro o gato):");
@@ -38,12 +37,14 @@ public class FuncionesMascota {
 
       log.info("Ingrese la edad:");
       int guardarEdad = sc.nextInt();
-      sc.nextLine();
+      sc.nextLine(); // limpiar buffer
 
       log.info("Ingrese el nombre del dueño:");
       String guardarNomDuenio = sc.nextLine();
+
       Mascota mascota = new Mascota(guardarNombreMasc, guardarRaza, especie, guardarEdad, guardarNomDuenio);
       mascotaArray[i] = mascota;
+
     }
   }
 

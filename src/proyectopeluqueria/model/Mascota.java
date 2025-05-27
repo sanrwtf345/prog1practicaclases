@@ -1,6 +1,10 @@
 package proyectopeluqueria.model;
 
+import java.util.logging.Logger;
+
 public class Mascota {
+  public static final Logger log = Logger.getLogger(Mascota.class.getName());
+
   private int id;
   private String nombre;
   private Especie especie;
@@ -14,7 +18,7 @@ public class Mascota {
     this.id = idMascotasIncremento;
     this.nombre = nombre;
     this.raza = raza;
-    this.especie = Especie.PERRO;
+    this.especie = Especie.GATO;
     this.edad = edad;
     this.nombDuenio = nombDuenio;
 
@@ -90,8 +94,22 @@ public class Mascota {
         + "Nombre del dueño: " + nombDuenio;
   }
 
-  public static void contarMascotaPorEspecie(Mascota[] arrayMascota){
+  public static void contarMascotaPorEspecie(Mascota[] arrayMascota) {
+    int contadorPerros = 0;
+    int contadorGatos = 0;
 
+    for (int i = 0; i < arrayMascota.length; i++) {
+      if (arrayMascota[i] != null) {
+        if (arrayMascota[i].getEspecie().equals(Especie.PERRO)) {
+          contadorPerros++;
+        } else if (arrayMascota[i].getEspecie().equals(Especie.GATO)) {
+          contadorGatos++;
+        }
+      }
+    }
+
+    log.info("Hay " + contadorPerros + " perros");
+    log.info("Hay " + contadorGatos + " gatos");
   }
 
 }

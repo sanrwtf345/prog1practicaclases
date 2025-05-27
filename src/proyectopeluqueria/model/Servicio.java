@@ -88,5 +88,8 @@ public class Servicio {
 
     }
   }
+  public boolean esServicioLargo() {
+    return this.duracion > 60;
+  }
 
 }

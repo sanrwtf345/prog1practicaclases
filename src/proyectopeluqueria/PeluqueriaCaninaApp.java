@@ -15,8 +15,9 @@ public class PeluqueriaCaninaApp {
     FuncionesMascota.agregarMascota(arrayMascota);
     FuncionesMascota.agregarServicios(arrayServicios);
     FuncionesMascota.agregarTurno(arrayTurnos, arrayMascota, arrayServicios);
-    FuncionesMascota.buscarMascotaPorNombre(arrayMascota);
     Servicio.calcularIVA(arrayServicios);
+    FuncionesMascota.buscarMascotaPorNombre(arrayMascota);
+    Mascota.contarMascotaPorEspecie(arrayMascota);
 
     for (int i = 0; i < arrayMascota.length; i++) {
       if (arrayMascota[i] != null) {

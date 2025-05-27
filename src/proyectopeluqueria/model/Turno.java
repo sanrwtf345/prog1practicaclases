@@ -75,4 +75,11 @@ public class Turno {
         + "Precio: $" + servicio.getPrecio();
   }
 
+  public boolean esTurnoActivo(Turno[] arrayTurnos) {
+    for (int i=0; i<arrayTurnos.length; i++){
+
+    }
+    return this.estado == Estado.PROGRAMADO;
+  }
+
 }
