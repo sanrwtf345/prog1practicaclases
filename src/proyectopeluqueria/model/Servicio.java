@@ -12,7 +12,7 @@ public class Servicio {
   private static int idServicioIncremento;
 
   public Servicio(TipoServicio tipoServicio, String descripcion, int duracion, double precio) {
-    this.tipoServicio = TipoServicio.BANIO;
+    this.tipoServicio = tipoServicio;
     this.descripcion = descripcion;
     this.duracion = duracion;
     this.precio = precio;
@@ -88,8 +88,18 @@ public class Servicio {
 
     }
   }
+
   public boolean esServicioLargo() {
     return this.duracion > 60;
   }
 
+  public static void mostrarServiciosLargos(Servicio[] arrayServicios) {
+    for (int i = 0; i < arrayServicios.length; i++) {
+      if (arrayServicios[i] != null) {
+        boolean esLargo = arrayServicios[i].esServicioLargo();
+        log.info("Servicio #" + (i + 1) + ": " + arrayServicios[i].mostrarServicio()
+            + " - ¿Es servicio largo?: " + esLargo);
+      }
+    }
+  }
 }

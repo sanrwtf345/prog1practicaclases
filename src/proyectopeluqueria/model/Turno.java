@@ -1,6 +1,10 @@
 package proyectopeluqueria.model;
 
+import java.util.logging.Logger;
+
 public class Turno {
+  public static final Logger log = Logger.getLogger(Turno.class.getName());
+
   private int id;
   private String fecha;
   private String hora;
@@ -75,11 +79,40 @@ public class Turno {
         + "Precio: $" + servicio.getPrecio();
   }
 
-  public boolean esTurnoActivo(Turno[] arrayTurnos) {
-    for (int i=0; i<arrayTurnos.length; i++){
-
-    }
+  public boolean esTurnoActivo() {
     return this.estado == Estado.PROGRAMADO;
   }
+  public static void mostrarTurnosActivos(Turno[] arrayTurnos) {
+    for (int i = 0; i < arrayTurnos.length; i++) {
+      if (arrayTurnos[i] != null) {
+        boolean esActivo = arrayTurnos[i].esTurnoActivo();
+        log.info("Turno #" + (i + 1) + ": " + arrayTurnos[i].mostrarDatos()
+            + " - ¿Es turno activo?: " + esActivo);
+      }
+    }
+  }
+  public static void contarTurnosPorEstado(Turno[] arrayTurnos) {
+    int contadorProgramado = 0;
+    int contadorCancelado = 0;
+    int contadorRealizado = 0;
 
+    for (int i = 0; i < arrayTurnos.length; i++) {
+      if (arrayTurnos[i] != null) {
+        Estado estado = arrayTurnos[i].getEstado();
+
+        if (estado == Estado.PROGRAMADO) {
+          contadorProgramado++;
+        } else if (estado == Estado.CANCELADO) {
+          contadorCancelado++;
+        } else if (estado == Estado.REALIZADO) {
+          contadorRealizado++;
+        }
+      }
+    }
+
+    Logger log = Logger.getLogger(Turno.class.getName());
+    log.info("Cantidad de turnos PROGRAMADOS: " + contadorProgramado);
+    log.info("Cantidad de turnos CANCELADOS: " + contadorCancelado);
+    log.info("Cantidad de turnos REALIZADOS: " + contadorRealizado);
+  }
 }

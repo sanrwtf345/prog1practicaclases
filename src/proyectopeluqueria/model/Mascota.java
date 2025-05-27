@@ -18,7 +18,7 @@ public class Mascota {
     this.id = idMascotasIncremento;
     this.nombre = nombre;
     this.raza = raza;
-    this.especie = Especie.GATO;
+    this.especie = especie;
     this.edad = edad;
     this.nombDuenio = nombDuenio;
 
