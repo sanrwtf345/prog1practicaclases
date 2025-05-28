@@ -4,8 +4,8 @@ package proyectopeluqueria.model;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-public class FuncionesMascota {
-  public static final Logger log = Logger.getLogger(FuncionesMascota.class.getName());
+public class FuncionesArrays {
+  public static final Logger log = Logger.getLogger(FuncionesArrays.class.getName());
 
   //funcion agregar mascota
   public static void agregarMascota(Mascota[] mascotaArray) {
@@ -51,7 +51,7 @@ public class FuncionesMascota {
   //funcion agregar turnos
   public static void agregarTurno(Turno[] arrayTurnos, Mascota[] mascotas, Servicio[] servicios) {
     Scanner sc = new Scanner(System.in);
-    Logger log = Logger.getLogger(FuncionesMascota.class.getName());
+    Logger log = Logger.getLogger(FuncionesArrays.class.getName());
 
     for (int i = 0; i < arrayTurnos.length; i++) {
       String fecha;

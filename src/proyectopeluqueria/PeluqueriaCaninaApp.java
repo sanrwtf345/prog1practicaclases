@@ -19,8 +19,8 @@ public class PeluqueriaCaninaApp {
     arrayServicios[1] = new Servicio(TipoServicio.CORTEPELO, "Corte de pelo completo", 45, 2000.0);
     arrayServicios[2] = new Servicio(TipoServicio.LIMPIEZAOIDOS, "Limpieza profunda de oídos", 20, 1200.0);
 
-    FuncionesMascota.agregarMascota(arrayMascota);
-    FuncionesMascota.agregarTurno(arrayTurnos, arrayMascota, arrayServicios);
+    FuncionesArrays.agregarMascota(arrayMascota);
+    FuncionesArrays.agregarTurno(arrayTurnos, arrayMascota, arrayServicios);
     int opcion;
     do {
       log.info("--- Menú ---");
@@ -40,7 +40,7 @@ public class PeluqueriaCaninaApp {
           Mascota.contarMascotaPorEspecie(arrayMascota);
           break;
         case 2:
-          FuncionesMascota.buscarMascotaPorNombre(arrayMascota);
+          FuncionesArrays.buscarMascotaPorNombre(arrayMascota);
           break;
         case 3:
           Servicio.calcularIVA(arrayServicios);
