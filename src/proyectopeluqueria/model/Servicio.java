@@ -80,7 +80,7 @@ public class Servicio {
         + "Duracion: " + duracion + "\n"
         + "Precio: " + precio;
   }
-
+  //metodo para calcular iva
   public static void calcularIVA(Servicio[] arrayServicios) {
     for (Servicio arrayServicio : arrayServicios) {
       double totalFinalConIva = arrayServicio.getPrecio() * 1.21;
@@ -88,11 +88,11 @@ public class Servicio {
 
     }
   }
-
+  //boolean para determinar si el servicio es largo
   public boolean esServicioLargo() {
     return this.duracion > 60;
   }
-
+  //mostrar turnos activos con boolean
   public static void mostrarServiciosLargos(Servicio[] arrayServicios) {
     for (int i = 0; i < arrayServicios.length; i++) {
       if (arrayServicios[i] != null) {

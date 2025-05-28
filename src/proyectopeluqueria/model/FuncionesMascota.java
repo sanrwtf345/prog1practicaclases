@@ -54,8 +54,15 @@ public class FuncionesMascota {
     Logger log = Logger.getLogger(FuncionesMascota.class.getName());
 
     for (int i = 0; i < arrayTurnos.length; i++) {
-      log.info("Ingrese la fecha del turno:");
-      String fecha = sc.nextLine();
+      String fecha;
+      // Validar fecha con espacio disponible
+      do {
+        log.info("Ingrese la fecha del turno:");
+        fecha = sc.nextLine();
+        if (!Turno.validarTurnosPorDia(arrayTurnos, fecha)) {
+          log.info("Ya se alcanzó el máximo de turnos (" + Turno.MAX_TURNOS_DIARIOS + ") para esta fecha. Intente con otra.");
+        }
+      } while (!Turno.validarTurnosPorDia(arrayTurnos, fecha));
 
       log.info("Ingrese la hora del turno:");
       String hora = sc.nextLine();
@@ -100,46 +107,6 @@ public class FuncionesMascota {
 
       Turno turno = new Turno(fecha, hora, estado, mascota, servicio);
       arrayTurnos[i] = turno;
-    }
-  }
-
-
-  //funcion agregar servicio
-  public static void agregarServicios(Servicio[] arrayServicios) {
-    Scanner sc = new Scanner(System.in);
-
-    for (int i = 0; i < arrayServicios.length; i++) {
-      TipoServicio tipoServicio = null;
-
-      while (tipoServicio == null) {
-        log.info("Por favor, ingrese el tipo de servicio (BANIO, CORTEPELO o LIMPIEZAOIDOS):");
-        String guardarTServicio = sc.nextLine();
-
-        for (TipoServicio t : TipoServicio.values()) {
-          if (t.name().equalsIgnoreCase(guardarTServicio)) {
-            tipoServicio = t;
-            break;
-          }
-        }
-
-        if (tipoServicio == null) {
-          log.info("Tipo de servicio inválido. Solo se permite BANIO, CORTEPELO o LIMPIEZAOIDOS.");
-        }
-      }
-
-      log.info("Ingrese una descripción del servicio:");
-      String guardarDescripcion = sc.nextLine();
-
-      log.info("Ingrese la duración del servicio:");
-      int guardarDuracion = sc.nextInt();
-      sc.nextLine(); // limpiar salto de línea
-
-      log.info("Ingrese el precio del servicio:");
-      double guardarPrecio = sc.nextDouble();
-      sc.nextLine(); // limpiar salto de línea
-
-      Servicio servicio = new Servicio(tipoServicio, guardarDescripcion, guardarDuracion, guardarPrecio);
-      arrayServicios[i] = servicio;
     }
   }
 

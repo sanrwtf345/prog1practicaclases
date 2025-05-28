@@ -93,7 +93,7 @@ public class Mascota {
         + "Raza: " + raza + "\n"
         + "Nombre del dueño: " + nombDuenio;
   }
-
+  //contar y mostrar cantidad de mascotas por especie
   public static void contarMascotaPorEspecie(Mascota[] arrayMascota) {
     int contadorPerros = 0;
     int contadorGatos = 0;

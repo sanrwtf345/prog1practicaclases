@@ -79,9 +79,12 @@ public class Turno {
         + "Precio: $" + servicio.getPrecio();
   }
 
+  //boolean para ver si el turno es activo
   public boolean esTurnoActivo() {
     return this.estado == Estado.PROGRAMADO;
   }
+
+  //mostrar turnos activos con el boolean
   public static void mostrarTurnosActivos(Turno[] arrayTurnos) {
     for (int i = 0; i < arrayTurnos.length; i++) {
       if (arrayTurnos[i] != null) {
@@ -91,6 +94,8 @@ public class Turno {
       }
     }
   }
+
+  //agrupar y contar turnos por estado
   public static void contarTurnosPorEstado(Turno[] arrayTurnos) {
     int contadorProgramado = 0;
     int contadorCancelado = 0;
@@ -114,5 +119,20 @@ public class Turno {
     log.info("Cantidad de turnos PROGRAMADOS: " + contadorProgramado);
     log.info("Cantidad de turnos CANCELADOS: " + contadorCancelado);
     log.info("Cantidad de turnos REALIZADOS: " + contadorRealizado);
+  }
+
+  //constante de turnos maximos por dia
+  public static final int MAX_TURNOS_DIARIOS = 5;
+
+  public static boolean validarTurnosPorDia(Turno[] arrayTurnos, String fecha) {
+    int contador = 0;
+
+    for (Turno turno : arrayTurnos) {
+      if (turno != null && turno.getFecha().equals(fecha)) {
+        contador++;
+      }
+    }
+
+    return contador < MAX_TURNOS_DIARIOS;
   }
 }

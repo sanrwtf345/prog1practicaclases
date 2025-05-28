@@ -10,12 +10,16 @@ public class PeluqueriaCaninaApp {
   public static final Logger log = Logger.getLogger(PeluqueriaCaninaApp.class.getName());
 
   public static void main(String[] args) {
-    Mascota[] arrayMascota = new Mascota[3];
+    Mascota[] arrayMascota = new Mascota[2];
     Turno[] arrayTurnos = new Turno[3];
     Servicio[] arrayServicios = new Servicio[3];
     log.info("Bienvenido, por favor complete los siguientes campos");
+    // Precargar manualmente los servicios
+    arrayServicios[0] = new Servicio(TipoServicio.BANIO, "Baño con shampoo especial", 30, 1500.0);
+    arrayServicios[1] = new Servicio(TipoServicio.CORTEPELO, "Corte de pelo completo", 45, 2000.0);
+    arrayServicios[2] = new Servicio(TipoServicio.LIMPIEZAOIDOS, "Limpieza profunda de oídos", 20, 1200.0);
+
     FuncionesMascota.agregarMascota(arrayMascota);
-    FuncionesMascota.agregarServicios(arrayServicios);
     FuncionesMascota.agregarTurno(arrayTurnos, arrayMascota, arrayServicios);
     int opcion;
     do {
@@ -23,7 +27,7 @@ public class PeluqueriaCaninaApp {
       log.info("1. Ver cantidad de mascotas por especie");
       log.info("2. Buscar mascota por nombre");
       log.info("3. Calcular precion final de los servicios");
-      log.info("4. Mostrar turnos por estado");
+      log.info("4. Mostrar cantidad de turnos por estado");
       log.info("5. Mostrar servicios largos");
       log.info("6. Mostrar turnos activos");
       log.info("0. Salir");
